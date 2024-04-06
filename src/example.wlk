@@ -31,7 +31,7 @@ object lobo {
 	// Los 3 chanchitos
 	method soplarCasa(casa){
 		//Recibe un objeto Casa
-		peso = (peso - casa.resistencia()).max(0)
+		peso = (peso - casa.resistencia() + casa.pesoOcupantes()).max(0)
 	}
 }
 object caperucita {
@@ -70,24 +70,43 @@ object cazador{
 
 object casaPaja{
 	const resistencia = 0;
+	const pesoOcupantes = 3 * chanchito.peso();
+	method pesoOcupantes(){
+		return pesoOcupantes;
+	}
 	method resistencia(){
 		return resistencia;
 	}
 }
 object casaMadera{
+	const pesoOcupantes = 3 * chanchito.peso();
 	const resistencia = 5;
+	method pesoOcupantes(){
+		return pesoOcupantes;
+	}
 	method resistencia(){
 		return resistencia;
 	}
 }
 object casaLadrillos{
-	var resistencia = 0 + cantidadDeLadrillos*2;
 	var cantidadDeLadrillos;
+	const pesoOcupantes = 3 * chanchito.peso();
+	var resistencia = 0 + cantidadDeLadrillos*2;
 	method cantidadDeLadrillos(cantidad){
 		cantidadDeLadrillos = cantidad
 	}
+	method pesoOcupantes(){
+		return pesoOcupantes;
+	}
+	
 	
 	method resistencia(){
 		return resistencia;
+	}
+}
+object chanchito{
+	const peso = 10;
+	method peso(){
+		return peso;
 	}
 }
